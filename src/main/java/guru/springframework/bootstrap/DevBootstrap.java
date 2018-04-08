@@ -5,9 +5,11 @@ import guru.springframework.domain.enums.Difficulty;
 import guru.springframework.repository.CategoryRepository;
 import guru.springframework.repository.RecipeRepository;
 import guru.springframework.repository.UnityOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -29,14 +32,15 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         this.unityOfMeasureRepository = unityOfMeasureRepository;
     }
 
+    @Transactional
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         initData();
     }
 
     public void initData() {
-        List<Recipe> recipes = initRecipes();
-        recipeRepository.saveAll(recipes);
+        recipeRepository.saveAll(initRecipes());
+        log.debug("loading bootstrap data");
     }
 
     public List<Recipe> initRecipes() {
