@@ -21,10 +21,8 @@
                             <h5>Categories</h5>
                         </div>
                         <div class="col-md-9">
-                            <ul>
-                                <li>cat one</li>
-                                <li>cat two</li>
-                                <li>cat three</li>
+                            <ul >
+                                <li th:each="category : ${recipe.categories}" th:text="${category.description}"></li>
                             </ul>
                         </div>
                     </div>
@@ -33,13 +31,13 @@
                             <h6>Prep Time:</h6>
                         </div>
                         <div class="cold-md-3">
-                            <p>30 min</p>
+                            <p th:text="${(recipe.prepTime) + ' min'}">30 min</p>
                         </div>
                         <div class="cold-md-3">
                             <h6>Difficulty:</h6>
                         </div>
                         <div class="cold-md-3">
-                            <p>Easy</p>
+                            <p th:text="${recipe.difficulty}">Easy</p>
                         </div>
                     </div>
                     <div class="row">
@@ -47,27 +45,59 @@
                             <h6>Cooktime:</h6>
                         </div>
                         <div class="cold-md-3">
-                            <p>30 min</p>
+                            <p th:text="${(recipe.cookTime) + ' min'}">30 min</p>
                         </div>
                         <div class="cold-md-3">
                             <h6>Servings:</h6>
                         </div>
                         <div class="cold-md-3">
-                            <p>4</p>
+                            <p th:text="${recipe.servings}">4</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cold-md-3">
+                            <h6>Source:</h6>
+                        </div>
+                        <div class="cold-md-3">
+                            <p th:text="${recipe.source}">30 min</p>
+                        </div>
+                        <div class="cold-md-3">
+                            <h6>URL:</h6>
+                        </div>
+                        <div class="cold-md-3">
+                            <p th:text="${recipe.url}">4</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card border-secondary text-center">
+            <div class="card border-secondary">
                 <div class="card-body">
-                    <div class="card-header">Ingredients</div>
+                    <div class="card-header text-center">Ingredients</div>
                     <div class="row">
                         <div class="col-md-12">
                             <ul>
-                                <li>1 Cup of milk</li>
-                                <li>1 Cup of milk</li>
-                                <li>1 Cup of milk</li>
+                                <li th:each="ingredient : ${recipe.ingredients}" th:text="${(ingredient.amount + ' ' + ingredient.uom + ' - ' + ingredient.description)}">1 Cup of milk</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <div class="card-header text-center">Directions</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="${recipe.directions}">1 Cup of milk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <div class="card-header text-center">Notes</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p th:text="${recipe.notes.recipeNotes}">1 Cup of milk</p>
                         </div>
                     </div>
                 </div>

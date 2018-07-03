@@ -92,6 +92,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         }
 
         Recipe guacamole = new Recipe();
+        guacamole.setServings(4);
+        guacamole.setSource("Simply Recipes");
+        guacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacamole.setCategories(Stream.of(dip.get(), mexican.get(), vegan.get(), avocado.get()).collect(Collectors.toSet()));
         guacamole.setCookTime(0);
         guacamole.setPrepTime(10);
@@ -127,6 +130,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         //Yummy Tacos
         Recipe tacosRecipe = new Recipe();
+        tacosRecipe.setServings(4);
+        tacosRecipe.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacosRecipe.setSource("Simply Recipes");
         tacosRecipe.setDescription("Spicy Grilled Chicken Taco");
         tacosRecipe.setCookTime(9);
         tacosRecipe.setPrepTime(20);
