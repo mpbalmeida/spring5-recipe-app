@@ -1,11 +1,11 @@
 package guru.springframework.repository;
 
-import guru.springframework.domain.UnityOfMeasure;
+import guru.springframework.domain.UnitOfMeasure;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface UnityOfMeasureRepository extends CrudRepository<UnityOfMeasure, Long> {
+public interface UnityOfMeasureRepository extends CrudRepository<UnitOfMeasure, Long> {
 
-    Optional<UnityOfMeasure> findByDescription(String description);
+    Optional<UnitOfMeasure> findByDescription(String description);
 }

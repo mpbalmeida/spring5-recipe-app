@@ -1,6 +1,6 @@
 package guru.springframework.repository;
 
-import guru.springframework.domain.UnityOfMeasure;
+import guru.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UnityOfMeasureRepositoryIT {
+public class UnitOfMeasureRepositoryIT {
 
     @Autowired
     UnityOfMeasureRepository unityOfMeasureRepository;
@@ -26,7 +26,7 @@ public class UnityOfMeasureRepositoryIT {
     @Test
     public void findByDescription() {
 
-        Optional<UnityOfMeasure> cup = unityOfMeasureRepository.findByDescription("Cup");
+        Optional<UnitOfMeasure> cup = unityOfMeasureRepository.findByDescription("Cup");
 
         assertEquals("Cup", cup.get().getDescription());
     }
