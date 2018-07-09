@@ -18,6 +18,8 @@
                     <div class="card-body">
                         <div class="card-header">Edit Recipe Information</div>
 
+                        <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" class="btn btn-primary" role="button">Change image</a>
+
                         <div class="form-row">
                             <div class="col">
                                 <label>Recipe Description:</label>
