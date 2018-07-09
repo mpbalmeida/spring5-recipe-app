@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class UnitOfMeasureRepositoryIT {
 
     @Autowired
-    UnityOfMeasureRepository unityOfMeasureRepository;
+    UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Before
     public void setUp() throws Exception {
@@ -26,7 +26,7 @@ public class UnitOfMeasureRepositoryIT {
     @Test
     public void findByDescription() {
 
-        Optional<UnitOfMeasure> cup = unityOfMeasureRepository.findByDescription("Cup");
+        Optional<UnitOfMeasure> cup = unitOfMeasureRepository.findByDescription("Cup");
 
         assertEquals("Cup", cup.get().getDescription());
     }

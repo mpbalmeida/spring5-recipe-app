@@ -4,7 +4,7 @@ import guru.springframework.domain.*;
 import guru.springframework.domain.enums.Difficulty;
 import guru.springframework.repository.CategoryRepository;
 import guru.springframework.repository.RecipeRepository;
-import guru.springframework.repository.UnityOfMeasureRepository;
+import guru.springframework.repository.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -24,12 +24,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private CategoryRepository categoryRepository;
     private RecipeRepository recipeRepository;
-    private UnityOfMeasureRepository unityOfMeasureRepository;
+    private UnitOfMeasureRepository unitOfMeasureRepository;
 
-    public DevBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnityOfMeasureRepository unityOfMeasureRepository) {
+    public DevBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
         this.categoryRepository = categoryRepository;
         this.recipeRepository = recipeRepository;
-        this.unityOfMeasureRepository = unityOfMeasureRepository;
+        this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
     @Transactional
@@ -64,29 +64,29 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
             throw new RuntimeException("Expected category Not Found");
         }
 
-        Optional<UnitOfMeasure> teaspoon = unityOfMeasureRepository.findByDescription("Teaspoon");
+        Optional<UnitOfMeasure> teaspoon = unitOfMeasureRepository.findByDescription("Teaspoon");
         if(!teaspoon.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
-        Optional<UnitOfMeasure> tablespoon = unityOfMeasureRepository.findByDescription("Tablespoon");
+        Optional<UnitOfMeasure> tablespoon = unitOfMeasureRepository.findByDescription("Tablespoon");
         if(!tablespoon.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
-        Optional<UnitOfMeasure> dash = unityOfMeasureRepository.findByDescription("Dash");
+        Optional<UnitOfMeasure> dash = unitOfMeasureRepository.findByDescription("Dash");
         if(!dash.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
-        Optional<UnitOfMeasure> each = unityOfMeasureRepository.findByDescription("Each");
+        Optional<UnitOfMeasure> each = unitOfMeasureRepository.findByDescription("Each");
         if(!each.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
 
-        Optional<UnitOfMeasure> cup = unityOfMeasureRepository.findByDescription("Cup");
+        Optional<UnitOfMeasure> cup = unitOfMeasureRepository.findByDescription("Cup");
         if(!cup.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
 
-        Optional<UnitOfMeasure> pinch = unityOfMeasureRepository.findByDescription("Pinch");
+        Optional<UnitOfMeasure> pinch = unitOfMeasureRepository.findByDescription("Pinch");
         if(!pinch.isPresent()){
             throw new RuntimeException("Expected UoM Not Found");
         }
