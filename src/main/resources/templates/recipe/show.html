@@ -15,15 +15,21 @@
             <div class="card border-primary text-center">
                 <div class="card-body">
                     <div class="card-header" th:text="${recipe.description}">Recipe name</div>
+                    <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" class="btn btn-primary" role="button">Change image</a>
 
                     <div class="row">
                         <div class="col-md-3">
                             <h5>Categories</h5>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-3">
                             <ul >
                                 <li th:each="category : ${recipe.categories}" th:text="${category.description}"></li>
                             </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../../static/images/guacamole400x400WithX.jpg"
+                                 th:src="@{'/recipe/' + ${recipe.id} + '/recipe-image'}"
+                                 width="200" height="200">
                         </div>
                     </div>
                     <div class="row">
