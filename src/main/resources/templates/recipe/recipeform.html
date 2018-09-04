@@ -27,7 +27,7 @@
 
                         <div class="form-row">
                             <div class="col">
-                                <label>Recipe Description:</label>
+                                <label th:text="#{recipe.description}">Recipe Description:</label>
                                 <input type="text" class="form-control" th:field="*{description}" th:class="${#fields.hasErrors('description')} ? 'form-control is-invalid' : 'form-control'">
                                 <div class="invalid-feedback">
                                     <ul>
