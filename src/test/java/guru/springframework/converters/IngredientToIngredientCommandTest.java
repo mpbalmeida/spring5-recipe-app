@@ -1,14 +1,19 @@
 package guru.springframework.converters;
 
 import guru.springframework.commands.IngredientCommand;
+import guru.springframework.commands.UnityOfMeasureCommand;
 import guru.springframework.domain.Ingredient;
 import guru.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Marcos Almeida on 05/07/2018
@@ -20,12 +25,15 @@ public class IngredientToIngredientCommandTest {
     public static final Long UOM_ID = new Long(2L);
     public static final Long ID_VALUE = new Long(1L);
 
+    @Mock
+    UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand;
 
     IngredientToIngredientCommand converter;
 
     @Before
     public void setUp() throws Exception {
-        converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        MockitoAnnotations.initMocks(this);
+        converter = new IngredientToIngredientCommand(unitOfMeasureToUnitOfMeasureCommand);
     }
 
     @Test
@@ -67,8 +75,12 @@ public class IngredientToIngredientCommandTest {
         UnitOfMeasure uom = new UnitOfMeasure();
         uom.setId(UOM_ID);
 
+        UnityOfMeasureCommand unityOfMeasureCommand = new UnityOfMeasureCommand();
+        unityOfMeasureCommand.setId(UOM_ID);
+
         ingredient.setUom(uom);
         //when
+        when(unitOfMeasureToUnitOfMeasureCommand.convert(uom)).thenReturn(unityOfMeasureCommand);
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         //then
         assertEquals(ID_VALUE, ingredientCommand.getId());
